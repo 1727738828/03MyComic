@@ -18,7 +18,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body  class="horizontal-menu-page">
 <section>
     <!--sidebar nav start-->
     <nav class="navbar navbar-default" role="navigation">
@@ -40,13 +40,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index">漫画展示</a></li>
+                    <li><a href="index">漫画展示</a></li>
                     <li><a href="insertComic">漫画上架</a></li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类管理<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">类型管理</a></li>
-                            <li><a href="#">分类管理</a></li>
+                            <li><a href="changeSort">分类管理</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Fontawesome</a></li>
@@ -85,6 +85,12 @@
         </div><!-- /.container-fluid -->
     </nav>
     <!--sidebar nav end-->
+
+
+
+
+
+
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
@@ -98,49 +104,5 @@
 <!--common scripts for all pages-->
 <script src="js/scripts.js"></script>
 <script src="js/jquery.isotope.js"></script>
-
-<script type="text/javascript">
-    $(function () {
-        var $container = $('#gallery');
-        $container.isotope({
-            itemSelector: '.item',
-            animationOptions: {
-                duration: 750,
-                easing: 'linear',
-                queue: false
-            }
-        });
-
-        // filter items when filter link is clicked
-        $('#filters a').click(function () {
-            var selector = $(this).attr('data-filter');
-            $container.isotope({filter: selector});
-            return false;
-        });
-    });
-
-
-    function Delete(id) {
-        $.post("/index",
-            {
-                id: id,
-            }, function (data, status) {
-                // alert("数据:" + data + ";状态:" + status);
-            });
-
-    }
-
-    $(function () {
-        var i = 1;
-        $("#addselect").click(function () {
-            if (i < 3) {
-                var $select = $("<select class='form-control m-bot15 pull-right' name='sort" + i + "' id='sort'><% sortName.forEach(function (sortName) { %><option value='<%= sortName.name %>'><%= sortName.name %></option><% }) %></select>");
-                $("#addsort").append($select);
-                i++;
-            }
-        });
-
-    })
-</script>
 </body>
 </html>

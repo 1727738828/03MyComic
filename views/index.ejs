@@ -48,7 +48,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类管理<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">类型管理</a></li>
-                            <li><a href="#">分类管理</a></li>
+                            <li><a href="changeSort">分类管理</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Fontawesome</a></li>
@@ -272,7 +272,7 @@
                                                                 <a href="javascript:void(0);"
                                                                    class="btn btn-primary pull-right"
                                                                    id="addselect">+</a>
-                                                                <%if(mycomic.sort1!=null){%>
+                                                                <% if(mycomic.sort1 != null){ %>
                                                                 <select class="form-control m-bot15 pull-right"
                                                                         name="sort1" id="sort1">
                                                                     <% sortName.forEach(function (sortName) {
@@ -288,7 +288,7 @@
                                                                     }
                                                                     }) %>
                                                                 </select>
-                                                               <% }if(mycomic.sort2!=null){%>
+                                                                <% }if(mycomic.sort2 != null){ %>
                                                                 <select class="form-control m-bot15 pull-right"
                                                                         name="sort2" id="sort2">
                                                                     <% sortName.forEach(function (sortName) {
@@ -304,7 +304,7 @@
                                                                     }
                                                                     }) %>
                                                                 </select>
-                                                                <% }if(mycomic.sort3!=null){%>
+                                                                <% }if(mycomic.sort3 != null){ %>
                                                                 <select class="form-control m-bot15 pull-right"
                                                                         name="sort3" id="sort3">
                                                                     <% sortName.forEach(function (sortName) {
@@ -320,7 +320,7 @@
                                                                     }
                                                                     }) %>
                                                                 </select>
-                                                                <% }%>
+                                                                <% } %>
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                             <div class="form-group">
@@ -383,13 +383,15 @@
                                                             <div class="form-group">
                                                                 <label for="count">话数</label>
                                                                 <input type="text" class="form-control" name="count"
-                                                                       id="count" placeholder="请输入当前总话数" value="<%= mycomic.count %>">
+                                                                       id="count" placeholder="请输入当前总话数"
+                                                                       value="<%= mycomic.count %>">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="introduction">简介</label>
                                                                 <textarea rows="6" class="form-control"
                                                                           name="introduction"
-                                                                          id="introduction" value="<%= mycomic.introduction %>"></textarea>
+                                                                          id="introduction"
+                                                                          value="<%= mycomic.introduction %>"></textarea>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">提交</button>
                                                         </form>
