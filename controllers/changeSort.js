@@ -19,7 +19,7 @@ exports.changeSort = function (req, res) {
     var sortUpdate = new Sort();
     sortUpdate.init();
 
-    var sortUpdatesql="UPDATE sort SET name = '"+name+"' where id="+index;
+    var sortUpdatesql = "UPDATE sort SET name = '" + name + "' where id=" + index;
     sortUpdate.update(sortUpdatesql);
 // 删除
     if (req.body.id != null) {
@@ -31,4 +31,16 @@ exports.changeSort = function (req, res) {
         deletesort.queryAll(deletesortsql, function (deletesort) {
         });
     }
+    if (req.body.sort_name != null) {
+        //插入
+        var sort_name = req.body.sort_name;
+        var sort_sql = "insert into sort(name)values(?)";
+        var sort_params = [sort_name];
+//2,创建对象
+        var sort_add = new Sort();
+        sort_add.init();
+        sort_add.insert(sort_sql, sort_params);
+    }
+
+
 };

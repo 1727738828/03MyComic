@@ -15,6 +15,27 @@ function ImageUtil() {
         //2,连接
         connection.connect();
     };
+
+    this.insert= function (sql,Params) {
+        //4,进行插入操作
+        /**
+         *query，mysql语句执行的方法
+         * 1，userAddSql编写的sql语句
+         * 2，userAddSql_Params，sql语句中的值
+         * 3，function (err, result)，回调函数，err当执行错误时，回传一个err值，当执行成功时，传回result
+         */
+        connection.query(sql,Params,function (err, result) {
+            if(!err){
+                console.log(result);
+                // call();
+            }else{
+                console.log('[INSERT ERROR] - ', err.message);
+                return;
+            }
+        });
+        //5,连接结束
+        connection.end();
+    }
     this.update= function (sql) {
         //4,进行插入操作
         /**
