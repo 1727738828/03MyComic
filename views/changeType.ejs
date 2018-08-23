@@ -98,7 +98,7 @@
                                 <button type="button" class="btn btn-primary">ADD
                                 </button>
                             </a>
-                            <form action="changeType" method="post">
+                            <form action="insertType" method="post">
                                 <div class="modal fade" id="type_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -159,7 +159,7 @@
                                     </td>
                                 </tr>
 
-                                <form action="changeType" method="post">
+                                <form action="updateType" method="post">
                                     <div class="modal fade" id="type_changes<%= typeName.TypeID %>" tabindex="-1"
                                          role="dialog"
                                          aria-labelledby="myModalLabel"
@@ -171,7 +171,7 @@
                                                             aria-hidden="true">
                                                         &times;
                                                     </button>
-                                                    <h4 class="modal-title">Edit MyComic</h4>
+                                                    <h4 class="modal-title">Edit Type</h4>
                                                 </div>
                                                 <div class="modal-body row">
                                                     <div class="modal-content">
@@ -250,7 +250,7 @@
 
 
     function type_delete(id) {
-        $.post("/changeType",
+        $.post("/deleteType",
             {
                 id: id,
             }, function (data, status) {

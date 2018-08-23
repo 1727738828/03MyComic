@@ -10,7 +10,6 @@ exports.changeComic = function(req, res){
     var attention = req.body.attention;
     var likes = req.body.likes;
     var sort1 = req.body.sort1;
-    console.log(sort1);
     var sort2 = req.body.sort2;
     var sort3 = req.body.sort3;
     var type = req.body.type;

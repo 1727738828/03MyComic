@@ -98,7 +98,7 @@
                                 <button type="button" class="btn btn-primary">ADD
                                 </button>
                             </a>
-                            <form action="changeSort" method="post">
+                            <form action="insertSort" method="post">
                                 <div class="modal fade" id="sort_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -159,7 +159,7 @@
                                     </td>
                                 </tr>
 
-                                <form action="changeSort" method="post">
+                                <form action="updateSort" method="post">
                                     <div class="modal fade" id="sort_changes<%= sortName.id %>" tabindex="-1"
                                          role="dialog"
                                          aria-labelledby="myModalLabel"
@@ -250,7 +250,7 @@
 
 
     function sort_delete(id) {
-        $.post("/changeSort",
+        $.post("/deleteSort",
             {
                 id: id,
             }, function (data, status) {

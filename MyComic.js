@@ -29,11 +29,15 @@ app.post('/changeComic', changeComic.changeComic);
 app.get('/changeComic', changeComic.changeComic);
 
 var changeSort = require('./controllers/changeSort');
-app.post('/changeSort', changeSort.changeSort);
-app.get('/changeSort', changeSort.changeSort);
+app.post('/insertSort', changeSort.insertSort);
+app.post('/updateSort', changeSort.updateSort);
+app.post('/deleteSort', changeSort.deleteSort);
+app.get('/changeSort', changeSort.selectSort);
 
 
 var changeType = require('./controllers/changeType');
-app.post('/changeType', changeType.changeType);
-app.get('/changeType', changeType.changeType);
+app.post('/insertType', changeType.insertType);
+app.post('/updateType', changeType.updateType);
+app.post('/deleteType', changeType.deleteType);
+app.get('/changeType', changeType.selectType);
 app.listen(8888);

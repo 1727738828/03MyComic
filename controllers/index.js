@@ -22,7 +22,6 @@ exports.index = function (req, res) {
                     typeName: typeName,
                     mycomic: mycomic,
                     sortName: sortName,
-
                 });
             });
         });
