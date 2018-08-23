@@ -46,7 +46,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类管理<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="changeType">类型管理</a></li>
-                            <li><a href="changeSort">分类管理</a></li>
+                            <li><a href="changeType">分类管理</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Fontawesome</a></li>
@@ -93,26 +93,26 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Sort
-                            <a href="#sort_add" data-toggle="modal" style="float: right; margin:0;">
+                            Type
+                            <a href="#type_add" data-toggle="modal" style="float: right; margin:0;">
                                 <button type="button" class="btn btn-primary">ADD
                                 </button>
                             </a>
-                            <form action="changeSort" method="post">
-                                <div class="modal fade" id="sort_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <form action="changeType" method="post">
+                                <div class="modal fade" id="type_add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
                                                 </button>
-                                                <h4 class="modal-title">Edit Sort</h4>
+                                                <h4 class="modal-title">Edit Type</h4>
                                             </div>
                                             <div class="modal-body row">
                                                 <div class="modal-content">
                                                     <div class="col-md-7">
                                                         <div class="form-group">
                                                             <label> Name</label>
-                                                            <input id="name" class="form-control" name="sort_name">
+                                                            <input id="name" class="form-control" name="type_name">
                                                         </div>
                                                         <div class="pull-right">
                                                             <button type="submit" class="btn btn-primary">提交
@@ -143,24 +143,24 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <% sortName.forEach(function (sortName) { %>
-                                <tr id="<%= sortName.id %>" class="odd gradeX">
-                                    <td style="display: none;"><%= sortName.id %></td>
-                                    <td><%= sortName.name %></td>
+                                <% typeName.forEach(function (typeName) { %>
+                                <tr id="<%= typeName.TypeID %>" class="odd gradeX">
+                                    <td style="display: none;"><%= typeName.TypeID %></td>
+                                    <td><%= typeName.TypeName%></td>
                                     <td class="center">
-                                        <a href="#sort_changes<%= sortName.id %>" data-toggle="modal">
+                                        <a href="#type_changes<%= typeName.TypeID %>" data-toggle="modal">
                                             <button type="button" class="btn btn-primary">changes</button>
                                         </a>
                                     </td>
                                     <td class="center">
                                         <button type="button" class="btn btn-primary"
-                                                onclick="sort_delete(<%= sortName.id %>)">delete
+                                                onclick="type_delete(<%= typeName.TypeID %>)">delete
                                         </button>
                                     </td>
                                 </tr>
 
-                                <form action="changeSort" method="post">
-                                    <div class="modal fade" id="sort_changes<%= sortName.id %>" tabindex="-1"
+                                <form action="changeType" method="post">
+                                    <div class="modal fade" id="type_changes<%= typeName.TypeID %>" tabindex="-1"
                                          role="dialog"
                                          aria-labelledby="myModalLabel"
                                          aria-hidden="true">
@@ -179,10 +179,10 @@
                                                             <div class="form-group">
                                                                 <label> Name</label>
                                                                 <input style="display:none;" name="Index" id="link"
-                                                                       value="<%= sortName.id %>"
+                                                                       value="<%= typeName.TypeID %>"
                                                                        class="form-control">
                                                                 <input name="name" id="link"
-                                                                       value="<%= sortName.name %>"
+                                                                       value="<%= typeName.TypeName%>"
                                                                        class="form-control">
                                                             </div>
                                                             <div class="pull-right">
@@ -249,8 +249,8 @@
     });
 
 
-    function sort_delete(id) {
-        $.post("/changeSort",
+    function type_delete(id) {
+        $.post("/changeType",
             {
                 id: id,
             }, function (data, status) {

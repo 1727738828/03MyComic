@@ -30,6 +30,7 @@ exports.changeSort = function (req, res) {
         var deletesortsql = "delete from sort where id=" + sortID;
         deletesort.queryAll(deletesortsql, function (deletesort) {
         });
+        res.redirect('/index');
     }
     if (req.body.sort_name != null) {
         //插入
@@ -40,6 +41,7 @@ exports.changeSort = function (req, res) {
         var sort_add = new Sort();
         sort_add.init();
         sort_add.insert(sort_sql, sort_params);
+        res.redirect('/index');
     }
 
 

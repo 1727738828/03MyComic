@@ -38,5 +38,6 @@ exports.index = function (req, res) {
         var deletemycomicsql = "delete from mycomic where id=" + comicID;
         deletemycomic.queryAll(deletemycomicsql, function (deletemycomic) {
         });
+        req.body.id = null;
     }
 };
