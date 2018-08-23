@@ -28,8 +28,9 @@ exports.index = function (req, res) {
     });
 
 
-    // console.log(req.body.id);
-    if (req.body.id != null) {
+};
+exports.deleteindex = function (req, res) {
+
         var comicID = req.body.id;
         //2,创建对象
         var deletemycomic = new INDEX();
@@ -37,6 +38,5 @@ exports.index = function (req, res) {
         var deletemycomicsql = "delete from mycomic where id=" + comicID;
         deletemycomic.queryAll(deletemycomicsql, function (deletemycomic) {
         });
-        req.body.id = null;
-    }
+        res.redirect("/index");
 };

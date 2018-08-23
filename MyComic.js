@@ -19,10 +19,11 @@ app.set('views', __dirname + '/views');
 var index = require('./controllers/index');
 app.get('/index', index.index);
 app.post('/index', index.index);
+app.post('/deleteindex', index.deleteindex);
 
 var insertComic = require('./controllers/insertComic');
 app.post('/insertComic', insertComic.insertComic);
-app.get('/insertComic', insertComic.insertComic);
+app.get('/insertComic', insertComic.selectItem);
 
 var changeComic = require('./controllers/changeComic');
 app.post('/changeComic', changeComic.changeComic);
