@@ -1,4 +1,4 @@
 exports.changeSort= function(req, res){
 
-    res.render('/changeSort');
+    res.render('changeSort',{});
 };
