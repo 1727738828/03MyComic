@@ -27,4 +27,8 @@ app.get('/insertComic', insertComic.insertComic);
 var changeComic = require('./controllers/changeComic');
 app.post('/changeComic', changeComic.changeComic);
 app.get('/changeComic', changeComic.changeComic);
+
+var changeSort = require('./controllers/changeSort');
+app.post('/changeSort', changeSort.changeSort);
+app.get('/changeSort', changeSort.changeSort);
 app.listen(8888);
