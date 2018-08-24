@@ -41,4 +41,17 @@ app.post('/insertType', changeType.insertType);
 app.post('/updateType', changeType.updateType);
 app.post('/deleteType', changeType.deleteType);
 app.get('/changeType', changeType.selectType);
+
+
+var Upload = require('./controllers/upload');
+
+
+app.get('/upload', Upload.upload);
+
+
+
+
+
+
+
 app.listen(8888);
