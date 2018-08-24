@@ -18,6 +18,11 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/webuploader/0.1.1/webuploader.css">
+    <script src="https://cdn.staticfile.org/webuploader/0.1.1/webuploader.min.js"></script>
+    <script src="https://cdn.staticfile.org/webuploader/0.1.1/Uploader.swf"></script>
 </head>
 
 <body class="horizontal-menu-page">
@@ -107,9 +112,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="author">作者</label>
-                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="author" id="author" placeholder="请输入主笔">
-                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="author2" id="author2" placeholder="请输入作者2">
-                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="author3" id="author3" placeholder="请输入作者3">
+                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="author"
+                                       id="author" placeholder="请输入主笔">
+                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="author2"
+                                       id="author2" placeholder="请输入作者2">
+                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="author3"
+                                       id="author3" placeholder="请输入作者3">
                             </div>
                             <div class="form-group">
                                 <label for="hot">热度</label><!-- 后续将会删除 -->
@@ -117,15 +125,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="popular">人气值</label>
-                                <input type="text" class="form-control" name="popular" id="popular" placeholder="请输入人气值">
+                                <input type="text" class="form-control" name="popular" id="popular"
+                                       placeholder="请输入人气值">
                             </div>
                             <div class="form-group">
                                 <label for="comment">评论条数</label>
-                                <input type="text" class="form-control" name="comment"  id="comment" placeholder="请输入评论条数">
+                                <input type="text" class="form-control" name="comment" id="comment"
+                                       placeholder="请输入评论条数">
                             </div>
                             <div class="form-group">
                                 <label for="attention">关注人数</label>
-                                <input type="text" class="form-control" name="attention" id="attention" placeholder="请输入关注人数">
+                                <input type="text" class="form-control" name="attention" id="attention"
+                                       placeholder="请输入关注人数">
                             </div>
                             <div class="form-group">
                                 <label for="likes">点赞人数</label>
@@ -135,27 +146,43 @@
                                 <label for="sort">分类</label>
                                 <a href="javascript:void(0);" class="btn btn-primary pull-right" id="addselect">+</a>
                                 <select class="form-control m-bot15 pull-right" name="sort" id="sort">
-                                    <%sortName.forEach(function (sortName) {%>
-                                    <option value="<%=sortName.name%>"><%=sortName.name%></option>
-                                    <%})%>
+                                    <% sortName.forEach(function (sortName) { %>
+                                    <option value="<%= sortName.name %>"><%= sortName.name %></option>
+                                    <% }) %>
                                 </select>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="form-group">
                                 <label for="type">类型</label>
                                 <select class="form-control m-bot15" name="type" id="type">
-                                    <%typeName.forEach(function (typeName) {%>
-                                    <option value="<%=typeName.TypeName%>"><%=typeName.TypeName%></option>
-                                    <%})%>
+                                    <% typeName.forEach(function (typeName) { %>
+                                    <option value="<%= typeName.TypeName %>"><%= typeName.TypeName %></option>
+                                    <% }) %>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="ImgUrl">图片地址</label>
-                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="detailsImgUrl" id="detailsImgUrl" placeholder="请输入详情图片地址">
-                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="largeImgUrl" id="largeImgUrl" placeholder="请输入轮播图图片地址">
-                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="intervalImgUrl"id="intervalImgUrl" placeholder="请输入间隔图片地址">
-                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="recommendImgUrl"id="recommendImgUrl" placeholder="请输入佳作推荐图片地址">
-                                <input style="margin-bottom: 15px;" type="text" class="form-control" name="indexImgUrl" id="indexImgUrl" placeholder="请输入首页展示图片地址">
+                                <label for="ImgUrl">详情图片</label>
+                                <label for="ImgUrl">详情图片地址：<input name="detailsImgUrl" id="detailsImgUrl" type="text"
+                                                                  value=""></label>
+
+                                <div id="fileList" class="uploader-list"></div>
+                                <div id="filePicker">选择图片</div>
+                                <div id="pickerImg" style="height: 100px; width: 100px;"></div>
+                                <!--<label for="ImgUrl">轮播图图片</label>-->
+                                <!--<div id="fileList" class="uploader-list"></div>-->
+                                <!--<div id="filePicker">选择图片</div>-->
+
+                                <!--<label for="ImgUrl">间隔图片</label>-->
+                                <!--<div id="fileList" class="uploader-list"></div>-->
+                                <!--<div id="filePicker">选择图片</div>-->
+
+                                <!--<label for="ImgUrl">佳作推荐图片</label>-->
+                                <!--<div id="fileList" class="uploader-list"></div>-->
+                                <!--<div id="filePicker">选择图片</div>-->
+                                <!---->
+                                <!--<label for="ImgUrl">首页展示图片</label>-->
+                                <!--<div id="fileList" class="uploader-list"></div>-->
+                                <!--<div id="filePicker">选择图片</div>-->
                             </div>
                             <div class="form-group">
                                 <label for="state">状态</label>
@@ -171,7 +198,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="introduction">简介</label>
-                                <textarea rows="6" class="form-control" name="introduction" id="introduction"></textarea>
+                                <textarea rows="6" class="form-control" name="introduction"
+                                          id="introduction"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">提交</button>
                         </form>
@@ -201,17 +229,76 @@
 <!--common scripts for all pages-->
 <script src="js/scripts.js"></script>
 <script>
-    $(function(){
-        var i=1;
+    $(function () {
+        var i = 1;
         $("#addselect").click(function () {
-            if(i<3){
-                var $select = $("<select class='form-control m-bot15 pull-right' name='sort"+i+"' id='sort'><%sortName.forEach(function (sortName) {%><option value='<%=sortName.name%>'><%=sortName.name%></option><%})%></select>");
+            if (i < 3) {
+                var $select = $("<select class='form-control m-bot15 pull-right' name='sort" + i + "' id='sort'><% sortName.forEach(function (sortName) { %><option value='<%= sortName.name %>'><%= sortName.name %></option><% }) %></select>");
                 $("#addsort").append($select);
                 i++;
             }
         });
 
-    })
+    });
+
+    // 初始化Web Uploader
+    var uploader = WebUploader.create({
+
+        // 选完文件后，是否自动上传。
+        auto: true,
+
+        // swf文件路径
+        swf: 'https://cdn.staticfile.org/webuploader/0.1.1/Uploader.swf',
+
+        // 文件接收服务端。
+        server: 'uploadIMG',
+
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+        pick: '#filePicker',
+
+        // 只允许选择图片文件。
+        accept: {
+            title: 'Images',
+            extensions: 'gif,jpg,jpeg,bmp,png',
+            mimeTypes: 'image/*'
+        }
+    });
+
+    // 当有文件添加进来的时候
+    uploader.on('fileQueued', function (file) {
+
+    });
+
+    // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+    uploader.on('uploadSuccess', function (file, response) {
+
+        console.log(response.key);
+        //获得服务器的图片
+        var url = response.url;
+        var pickerImg = document.getElementById("pickerImg");
+
+        var img = document.createElement('img');
+        img.style.width = "100px";
+        img.style.height = "100px";
+        img.src = url;
+        pickerImg.appendChild(img);
+
+        var detailsImgUrl = document.getElementById("detailsImgUrl")
+        detailsImgUrl.value = url;
+
+    });
+
+    // 文件上传失败，显示上传出错。
+    uploader.on('uploadError', function (file) {
+
+    });
+
+    // 完成上传完了，成功或者失败，先删除进度条。
+    uploader.on('uploadComplete', function (file) {
+        console.log("上传完成");
+        console.log(file);
+    });
 </script>
 </body>
 </html>

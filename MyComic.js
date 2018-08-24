@@ -5,7 +5,6 @@ var express = require("express");
 
 var app = express();
 
-var fs = require("fs");
 
 var bodyParser = require('body-parser');
 
@@ -19,7 +18,7 @@ app.use(bodyParser.urlencoded({limit:'50mb',extended:true}));
 //设置静态文件
 app.use(express.static('public'));
 //指定模板引擎
-app.set("views engine", 'ejs');
+app.set("view engine", 'ejs');
 //指定模板位置
 app.set('views', __dirname + '/views');
 //接受表单的请求
@@ -29,9 +28,7 @@ app.get('/index', index.index);
 app.post('/index', index.index);
 app.post('/deleteindex', index.deleteindex);
 
-var insertComic = require('./controllers/insertComic');
-app.post('/insertComic', insertComic.insertComic);
-app.get('/insertComic', insertComic.selectItem);
+
 
 var changeComic = require('./controllers/changeComic');
 app.post('/changeComic', changeComic.changeComic);
@@ -50,16 +47,11 @@ app.post('/updateType', changeType.updateType);
 app.post('/deleteType', changeType.deleteType);
 app.get('/changeType', changeType.selectType);
 
-// 引入模块
-var COS = require('cos-nodejs-sdk-v5');
-var cos = new COS({
-    // 必选参数
-    SecretId: "AKIDtgHguyESzPehYDD8LMBoHvSehZLv21LV",
-    SecretKey: "84oNlx0sY2NcgaIrFVZWItIYdWFxVr21",
-});
-var Upload = require('./controllers/upload');
-app.post('/uploadIMG',multer({dest: __dirname + '/public/upload/'}).array('file'), Upload.uploadIMG);
-app.get('/UploadImages', Upload.UploadImages );
 
+
+var insertComic = require('./controllers/insertComic');
+app.post('/insertComic', insertComic.insertComic);
+app.post('/uploadIMG',multer({dest: __dirname + '/public/upload/'}).array('file'), insertComic.uploadIMG);
+app.get('/insertComic', insertComic.selectItem);
 
 app.listen(8888);
